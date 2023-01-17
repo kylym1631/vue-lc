@@ -4,32 +4,36 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>Vue</title>
+
+        <link
+        href="https://cdn.jsdelivr.net/npm/tailwindcss/dist/tailwind.min.css"
+        rel="stylesheet"
+      />
+
 
         <script src="https://unpkg.com/vue@3"></script>
     </head>
     <body class="antialiased">
 
     <div id="app">
-        <p>
-            <input type="text" v-model="greeting">
-        </p>
-       <p>
-           {{greeting}}({{greeting.length}})
-       </p>
+      <button :class="active ? 'text-red' : 'text-green'" @click="toggle">
+            Click me
+      </button>
     </div>
     <script>
         Vue.createApp({
             data(){
                 return {
-                    greeting:'Hello World'
-                };
+                    active:false
+                }
             },
-            mounted(){
-                 setTimeout(()=>{
-                     this.greeting = 'Changed'
-                 },3000)
+            methods:{
+                toggle(){
+                   this.active = !this.active;
+                }
             }
+            
         }).mount('#app')
     </script>
     </body>
